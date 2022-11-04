@@ -32,6 +32,24 @@ function getRandomInteger(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
+//Si può "modificare leggermente per renderla universale e poterla utilizzare tutte le volte che devo dare e togliere hidden a un elemento forse..."
+function hidden() {
+  eleListNumber.classList.add("hidden");
+  eleUSer.classList.remove("hidden");
+  // parseInt(prompt("Quali erano i 5 numeri che erano a schermo?"));
+}
+
+function compare(arr1, arr2) {
+  let check = [];
+  for (let i = 0; i < arr1.length; i++)
+    if (arr1[i] == arr2[i]) {
+      check[i] = true;
+    } else {
+      check[i] = false;
+    }
+  return check.every((item) => item === true);
+}
+
 for (let i = 0; i < 5; i++) {
   let randomNumbers;
   do {
@@ -45,12 +63,6 @@ console.log(arrRandomNumbers);
 eleListNumber.innerHTML += arrRandomNumbers;
 
 setTimeout(hidden, 1000);
-
-function hidden() {
-  eleListNumber.classList.add("hidden");
-  eleUSer.classList.remove("hidden");
-  // parseInt(prompt("Quali erano i 5 numeri che erano a schermo?"));
-}
 
 eleForm.addEventListener("submit", function (event) {
   event.preventDefault();
@@ -67,12 +79,11 @@ eleForm.addEventListener("submit", function (event) {
     parseInt(eleN4.value),
     parseInt(eleN5.value)
   );
-  // arrUserNumbers.push(eleN2.value);
-  // arrUserNumbers.push(eleN3.value);
-  // arrUserNumbers.push(eleN4.value);
-  // arrUserNumbers.push(eleN5.value);
-  console.log(arrUserNumbers);
-  if (arrUserNumbers.includes(arrRandomNumbers)) {
+
+  // console.log(arrUserNumbers);
+  // console.log(arrRandomNumbers);
+  // console.log(compare(arrRandomNumbers, arrUserNumbers));
+  if (compare(arrRandomNumbers, arrUserNumbers)) {
     eleVerify.innerHTML += "Hai vinto!";
   } else {
     eleVerify.innerHTML += "Hai perso!";
