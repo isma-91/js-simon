@@ -34,6 +34,18 @@ function hidden() {
   // parseInt(prompt("Quali erano i 5 numeri che erano a schermo?"));
 }
 
+function howMany(arr1, arr2) {
+  let score = 0;
+  // let miss = 0;
+  for (let i = 0; i < arr1.length; i++)
+    if (arr1[i] == arr2[i]) {
+      score++;
+    }
+  return score;
+}
+
+console.log(howMany(arrRandomNumbers, arrUserNumbers));
+
 function compare(arr1, arr2) {
   let check = [];
   for (let i = 0; i < arr1.length; i++)
@@ -53,7 +65,7 @@ for (let i = 0; i < 5; i++) {
   arrRandomNumbers.push(randomNumbers);
 }
 
-console.log(arrRandomNumbers);
+console.log("numeri random", arrRandomNumbers);
 
 eleListNumber.innerHTML += arrRandomNumbers;
 
@@ -78,10 +90,17 @@ eleForm.addEventListener("submit", function (event) {
   // console.log(arrUserNumbers);
   // console.log(arrRandomNumbers);
   // console.log(compare(arrRandomNumbers, arrUserNumbers));
+  // howMany(arrRandomNumbers, arrUserNumbers);
   if (compare(arrRandomNumbers, arrUserNumbers)) {
-    eleVerify.innerHTML += "Hai vinto!";
+    eleVerify.innerHTML += `Hai indovinato ${howMany(
+      arrRandomNumbers,
+      arrUserNumbers
+    )} numeri su 5!!! Hai vinto!`;
   } else {
-    eleVerify.innerHTML += "Hai perso!";
+    eleVerify.innerHTML += `Hai indovinato solo ${howMany(
+      arrRandomNumbers,
+      arrUserNumbers
+    )} numeri su 5. Hai perso!`;
   }
   eleUser.classList.add("hidden");
   eleVerify.classList.remove("hidden");
