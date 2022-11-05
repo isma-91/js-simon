@@ -13,13 +13,18 @@
   //- Creare un setTimeout che dopo 30 secondi faccia nascondere i numeri random. 
   //- Chiedere all'utente tramite il prompt dei comandi quali erano i 5 numeri
   //- Creare un array dove andranno pushati i numeri che ci darà l'utente
-  - Inseriti tutti e 5 i numeri da parte dell'utente confrontare quali e quanti numeri ha ricordato (confrontando i 2 array?)
+  //- Inseriti tutti e 5 i numeri da parte dell'utente confrontare quali e quanti numeri ha ricordato (confrontando i 2 array?)
 */
+// TODO: Manca da far vedere Quali numeri sono stati azzeccati e quali no.
+
 const arrRandomNumbers = [];
 const arrUserNumbers = [];
 const eleUser = document.querySelector(".user-numbers");
 const eleListNumber = document.querySelector(".n-random");
+const eleControl = document.querySelector(".control");
 const eleVerify = document.querySelector(".verify");
+const eleVerifyRandomNumbers = document.querySelector(".verify-random-numbers");
+const eleVerifyUserNumbers = document.querySelector(".verify-user-numbers");
 const eleForm = document.querySelector("form");
 // const eleBtn = document.querySelector(".btn");
 
@@ -102,6 +107,11 @@ eleForm.addEventListener("submit", function (event) {
       arrUserNumbers
     )} numeri su 5. Hai perso!`;
   }
+
   eleUser.classList.add("hidden");
   eleVerify.classList.remove("hidden");
+  eleControl.classList.remove("hidden");
+  eleVerifyRandomNumbers.innerHTML += `I numeri erano: ${arrRandomNumbers}`;
+  eleVerifyUserNumbers.innerHTML += `I tuoi numeri: ${arrUserNumbers}`;
+  console.log(arrUserNumbers);
 });
